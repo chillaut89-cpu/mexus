@@ -279,23 +279,23 @@ nav.solid{background:rgba(10,10,15,.92);backdrop-filter:blur(20px);padding:.9rem
 .section-label{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;margin-bottom:1.5rem}
 /* h2タグ：セクションの見出し。各セクションに1つ使う */
 .section-h{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(2rem,5vw,4rem);line-height:1;letter-spacing:-.02em;margin-bottom:5rem}
-.srv-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.05)}
-.srv-card{background:rgba(13,0,32,.8);padding:3rem 2.5rem;position:relative;overflow:hidden}
-.srv-card::before{content:'';position:absolute;inset:0;opacity:0;transition:opacity .4s}
-.srv-card.s1::before{background:linear-gradient(135deg,rgba(200,255,0,.08),transparent)}
-.srv-card.s3::before{background:linear-gradient(135deg,rgba(0,212,255,.08),transparent)}
+.srv-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem}
+.srv-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);padding:4rem 3rem;position:relative;overflow:hidden;border-radius:8px;transition:transform .35s,box-shadow .35s}
+.srv-card:hover{transform:translateY(-6px);box-shadow:0 24px 48px rgba(0,0,0,.4)}.srv-card::before{content:"";position:absolute;inset:0;opacity:0;transition:opacity .4s}
+.srv-card.s1{border-color:rgba(200,255,0,.25)}.srv-card.s1::before{background:linear-gradient(135deg,rgba(200,255,0,.06),transparent)}
+.srv-card.s3{border-color:rgba(0,212,255,.25)}.srv-card.s3::before{background:linear-gradient(135deg,rgba(0,212,255,.06),transparent)}
 .srv-card:hover::before{opacity:1}
-.srv-icon{font-size:2.5rem;margin-bottom:1.8rem;display:block;transition:transform .4s}
+.srv-icon-wrap{width:96px;height:96px;border-radius:20px;display:flex;align-items:center;justify-content:center;margin-bottom:2.5rem;font-size:3rem}.srv-card.s1 .srv-icon-wrap{background:rgba(200,255,0,.12)}.srv-card.s3 .srv-icon-wrap{background:rgba(0,212,255,.12)}.srv-icon{font-size:3rem;display:block;transition:transform .4s}
 .srv-card:hover .srv-icon{transform:scale(1.15) rotate(-5deg)}
-.srv-n{font-family:'DM Mono',monospace;font-size:.55rem;letter-spacing:.2em;color:rgba(255,255,255,.25);margin-bottom:1rem}
+.srv-n{font-family:"DM Mono",monospace;font-size:.55rem;letter-spacing:.2em;color:rgba(255,255,255,.35);margin-bottom:.8rem}
 /* h3タグ：カードや小項目の見出し */
-.srv-name{font-family:'Syne',sans-serif;font-weight:700;font-size:1.6rem;letter-spacing:-.01em;margin-bottom:1rem}
+.srv-name{font-family:"Syne",sans-serif;font-weight:700;font-size:2rem;letter-spacing:-.01em;margin-bottom:1.2rem}
 .srv-card.s1 .srv-name{color:var(--lime)}
 .srv-card.s3 .srv-name{color:var(--electric)}
-.srv-text{font-size:.85rem;line-height:1.9;color:rgba(245,240,232,.45)}
-.srv-price{margin-top:2rem;display:inline-block;font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.1em;padding:.4rem .9rem;border-radius:100px}
-.s1 .srv-price{background:rgba(200,255,0,.1);color:var(--lime)}
-.s3 .srv-price{background:rgba(0,212,255,.1);color:var(--electric)}
+.srv-text{font-size:1rem;line-height:2.1;color:rgba(245,240,232,.8)}
+.srv-price{margin-top:2.5rem;display:inline-block;font-family:"DM Mono",monospace;font-size:.75rem;font-weight:500;letter-spacing:.08em;padding:.6rem 1.2rem;border-radius:100px}
+.s1 .srv-price{background:rgba(200,255,0,.15);color:var(--lime);border:1px solid rgba(200,255,0,.3)}
+.s3 .srv-price{background:rgba(0,212,255,.15);color:var(--electric);border:1px solid rgba(0,212,255,.3)}
 
 /* プロセスセクション（左半分白・右半分黒の分割デザイン） */
 #process{position:relative;padding:9rem 3rem;overflow:hidden}
@@ -532,7 +532,7 @@ footer{background:var(--lime);padding:1.5rem 3rem;display:flex;justify-content:s
     <!-- サービスカード1 -->
     <article class="srv-card s1 reveal">
       <p class="srv-n">01 —</p>
-      <span class="srv-icon" aria-hidden="true">⚡</span>
+      <div class="srv-icon-wrap"><span class="srv-icon" aria-hidden="true">⚡</span></div>
       <!-- h3: カード内の小見出し -->
       <h3 class="srv-name">Web サイト制作</h3>
       <p class="srv-text">
@@ -544,7 +544,7 @@ footer{background:var(--lime);padding:1.5rem 3rem;display:flex;justify-content:s
     <!-- サービスカード2 -->
     <article class="srv-card s3 reveal rd1">
       <p class="srv-n">02 —</p>
-      <span class="srv-icon" aria-hidden="true">🔧</span>
+      <div class="srv-icon-wrap"><span class="srv-icon" aria-hidden="true">🔧</span></div>
       <h3 class="srv-name">保守 · 運用</h3>
       <p class="srv-text">
         公開後も安心。更新代行・SEO改善までまとめて対応。
@@ -747,11 +747,6 @@ footer{background:var(--lime);padding:1.5rem 3rem;display:flex;justify-content:s
 <footer role="contentinfo">
   <p class="f-logo">NEXUS</p>
   <small class="f-copy">© 2025 NEXUS Web Design. Kagoshima, JP. All Rights Reserved.</small>
-  <nav class="f-sns" aria-label="SNSリンク">
-    <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer">Twitter</a>
-    <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">Instagram</a>
-    <a href="https://note.com/" target="_blank" rel="noopener noreferrer">Note</a>
-  </nav>
 </footer>
 
 <!-- ============================================================
